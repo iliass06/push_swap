@@ -1,8 +1,8 @@
 NAME = ps.a
 CC = cc
 FLAGS = -Wall -Werror -Wextra
-SRC = push_swap.c
-OBJ = push_swap.o
+SRC = push_swap.c push_swap_tools.c tools_tmp.c main.c
+OBJ = push_swap.o push_swap_tools.o tools_tmp.o main.o
 AR = ar rcs
 HEADER = push_swap.h
 
