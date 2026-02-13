@@ -6,7 +6,7 @@
 /*   By: iel-fadi <iel-fadi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/28 21:12:05 by iel-fadi          #+#    #+#             */
-/*   Updated: 2025/11/07 15:49:35 by iel-fadi         ###   ########.fr       */
+/*   Updated: 2026/02/13 00:43:46 by iel-fadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,5 +51,6 @@ char				*ft_strtrim(char const *s1, char const *set);
 char				*ft_substr(char const *s, unsigned int start, size_t len);
 int					ft_tolower(int c);
 int					ft_toupper(int c);
+long ft_atol(const char *nptr);
 
 #endif

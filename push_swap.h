@@ -6,7 +6,7 @@
 /*   By: iel-fadi <iel-fadi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/04 14:09:51 by iel-fadi          #+#    #+#             */
-/*   Updated: 2026/02/11 15:37:19 by iel-fadi         ###   ########.fr       */
+/*   Updated: 2026/02/13 01:18:54 by iel-fadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void push_to_stack(stack **src, stack **dest);
 void pa(stack **stack_a, stack **stack_b);
 void pb(stack **stack_a, stack **stack_b);
 void ra(stack **stack_a);
-void add_node(stack **stack_a, int value);
+void add_node_back(stack **stack_a, int value);
 void display(stack *stack_a);
 void index_stack(stack *stack_a);
 void display_with_index(stack *stack_a);

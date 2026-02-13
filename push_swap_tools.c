@@ -1,13 +1,26 @@
 #include "push_swap.h"
 
-void	add_node(stack **stack_a, int value)
+void	add_node_back(stack **stack_a, int value)
 {
 	stack	*new_node;
+	stack	*tmp;
 
+	tmp = *stack_a;
 	new_node = malloc(sizeof(stack));
+	if (!new_node)
+		return ;
 	new_node->value = value;
-	new_node->next = *stack_a;
-	*stack_a = new_node;
+	new_node->next = NULL;
+	if (*stack_a == NULL)
+    {
+        *stack_a = new_node;
+        return ;
+    }
+	while (tmp->next)
+	{
+		tmp = tmp->next;
+	}
+	tmp->next = new_node;
 }
 
 void	push_to_stack(stack **src, stack **dest)
