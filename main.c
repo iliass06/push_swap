@@ -6,7 +6,7 @@
 /*   By: iel-fadi <iel-fadi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/11 16:37:36 by iel-fadi          #+#    #+#             */
-/*   Updated: 2026/02/13 01:23:46 by iel-fadi         ###   ########.fr       */
+/*   Updated: 2026/02/13 16:48:31 by iel-fadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,13 @@ int	main(int ac, char *av[])
         i++;
     }
     index_stack(stack_a);
-    radix_sort(&stack_a, &stack_b);
-    // display(stack_a);
+    if (listsize(stack_a) == 2)
+        sa(&stack_a);
+    else if (listsize(stack_a) == 3)
+        sort_three(&stack_a);
+    else if (listsize(stack_a) <= 5)
+        sort_five(&stack_a, &stack_b);
+    else
+        radix_sort(&stack_a, &stack_b);
+    //display(stack_a);
 }
