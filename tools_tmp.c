@@ -15,7 +15,7 @@ void	display_with_index(stack *stack_a)
 
 void	display(stack *stack_a)
 {
-	stack	*tmp;
+	stack *tmp;
 
 	tmp = stack_a;
 	while (tmp)

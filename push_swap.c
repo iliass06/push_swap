@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: iel-fadi <iel-fadi@student.1337.ma>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/02/14 00:42:51 by iel-fadi          #+#    #+#             */
+/*   Updated: 2026/02/14 00:42:52 by iel-fadi         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 void	index_stack(stack *stack_a)
@@ -44,46 +56,46 @@ int	get_max_bits(stack *stack_a)
 	return (max_bits);
 }
 
-int listsize(stack *stack_a)
+int	listsize(stack *stack_a)
 {
-    stack *tmp;
-    int size;
+	stack	*tmp;
+	int		size;
 
-    size = 0;
-    tmp = stack_a;
-    while (tmp)
-    {
-        tmp = tmp->next;
-        size++;
-    }
-    return (size);
+	size = 0;
+	tmp = stack_a;
+	while (tmp)
+	{
+		tmp = tmp->next;
+		size++;
+	}
+	return (size);
 }
 
 void	radix_sort(stack **stack_a, stack **stack_b)
 {
-    int max_bits;
-    int size;
-    int i;
-    int j;
-    stack *head;
+	int		max_bits;
+	int		size;
+	int		i;
+	int		j;
+	stack	*head;
 
-    max_bits = get_max_bits(*stack_a);
-    size = listsize(*stack_a);
-    i = 0;
-    while (i < max_bits)
-    {
-        j = 0;
-        while (j < size)
-        {
-            head = *stack_a;
-            if (((head->index >> i) & 1) == 1)
-                ra(stack_a);
-            else
-                pb(stack_a, stack_b);
-            j++;
-        }
-        while (*stack_b)
-            pa(stack_a, stack_b);
-        i++;
-    }
+	max_bits = get_max_bits(*stack_a);
+	size = listsize(*stack_a);
+	i = 0;
+	while (i < max_bits)
+	{
+		j = 0;
+		while (j < size)
+		{
+			head = *stack_a;
+			if (((head->index >> i) & 1) == 1)
+				ra(stack_a);
+			else
+				pb(stack_a, stack_b);
+			j++;
+		}
+		while (*stack_b)
+			pa(stack_a, stack_b);
+		i++;
+	}
 }

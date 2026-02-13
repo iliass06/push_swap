@@ -1,3 +1,16 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap_tools.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: iel-fadi <iel-fadi@student.1337.ma>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/02/14 00:43:00 by iel-fadi          #+#    #+#             */
+/*   Updated: 2026/02/14 00:43:01 by iel-fadi         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "libft/libft.h"
 #include "push_swap.h"
 
 void	add_node_back(stack **stack_a, int value)
@@ -12,10 +25,10 @@ void	add_node_back(stack **stack_a, int value)
 	new_node->value = value;
 	new_node->next = NULL;
 	if (*stack_a == NULL)
-    {
-        *stack_a = new_node;
-        return ;
-    }
+	{
+		*stack_a = new_node;
+		return ;
+	}
 	while (tmp->next)
 	{
 		tmp = tmp->next;
@@ -33,37 +46,59 @@ void	push_to_stack(stack **src, stack **dest)
 	*dest = node_to_move;
 }
 
-void	pa(stack **stack_a, stack **stack_b)
+void	sort_three(stack **stack_a)
 {
-	if (*stack_b == NULL)
-		return ;
-	push_to_stack(stack_b, stack_a);
-	write(1, "pa\n", 3);
-}
-
-void	pb(stack **stack_a, stack **stack_b)
-{
-	if (*stack_a == NULL)
-		return ;
-	push_to_stack(stack_a, stack_b);
-	write(1, "pb\n", 3);
-}
-
-void	ra(stack **stack_a)
-{
-	stack	*tmp;
 	stack	*head;
+	int		max_index;
 
-	if (*stack_a == NULL || (*stack_a)->next == NULL)
-		return ;
 	head = *stack_a;
-	*stack_a = (*stack_a)->next;
-	tmp = *stack_a;
-	while (tmp->next != NULL)
+	max_index = head->index;
+	while (head)
 	{
-		tmp = tmp->next;
+		if (max_index < head->index)
+			max_index = head->index;
+		head = head->next;
 	}
-	tmp->next = head;
-	head->next = NULL;
-	write(1, "ra\n", 3);
+	head = *stack_a;
+	if (head->index == max_index)
+		ra(stack_a);
+	else if ((head->next)->index == max_index)
+	{
+		rra(stack_a);
+	}
+	if ((*stack_a)->index > ((*stack_a)->next)->index)
+		sa(stack_a);
+}
+
+void	sort_five(stack **stack_a, stack **stack_b)
+{
+	int	size;
+
+	size = listsize(*stack_a);
+	while (size > 3)
+	{
+		if ((*stack_a)->index == 0 || (*stack_a)->index == 1)
+		{
+			pb(stack_a, stack_b);
+			size--;
+		}
+		else
+			ra(stack_a);
+	}
+	sort_three(stack_a);
+	pa(stack_a, stack_b);
+	pa(stack_a, stack_b);
+	if ((*stack_a)->index > ((*stack_a)->next)->index)
+		sa(stack_a);
+}
+
+int	is_sorted(stack *stack_a)
+{
+	while (stack_a && stack_a->next)
+	{
+		if (stack_a->value > stack_a->next->value)
+			return (0);
+		stack_a = stack_a->next;
+	}
+	return (1);
 }
