@@ -1,8 +1,8 @@
 #include "push_swap.h"
 
-void	display_with_index(stack *stack_a)
+void	display_with_index(t_stack *stack_a)
 {
-	stack	*tmp;
+	t_stack	*tmp;
 
 	tmp = stack_a;
 	while (tmp)
@@ -13,9 +13,9 @@ void	display_with_index(stack *stack_a)
 	printf("NULL\n");
 }
 
-void	display(stack *stack_a)
+void	display(t_stack *stack_a)
 {
-	stack *tmp;
+	t_stack *tmp;
 
 	tmp = stack_a;
 	while (tmp)

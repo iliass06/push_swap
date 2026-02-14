@@ -6,16 +6,16 @@
 /*   By: iel-fadi <iel-fadi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/14 00:42:51 by iel-fadi          #+#    #+#             */
-/*   Updated: 2026/02/14 00:42:52 by iel-fadi         ###   ########.fr       */
+/*   Updated: 2026/02/14 22:04:32 by iel-fadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	index_stack(stack *stack_a)
+void	index_stack(t_stack *stack_a)
 {
-	stack	*tmp1;
-	stack	*tmp2;
+	t_stack	*tmp1;
+	t_stack	*tmp2;
 	int		ind;
 
 	tmp1 = stack_a;
@@ -34,9 +34,9 @@ void	index_stack(stack *stack_a)
 	}
 }
 
-int	get_max_bits(stack *stack_a)
+int	get_max_bits(t_stack *stack_a)
 {
-	stack	*head;
+	t_stack	*head;
 	int		max_bits;
 	int		max_index;
 
@@ -56,9 +56,9 @@ int	get_max_bits(stack *stack_a)
 	return (max_bits);
 }
 
-int	listsize(stack *stack_a)
+int	listsize(t_stack *stack_a)
 {
-	stack	*tmp;
+	t_stack	*tmp;
 	int		size;
 
 	size = 0;
@@ -71,13 +71,13 @@ int	listsize(stack *stack_a)
 	return (size);
 }
 
-void	radix_sort(stack **stack_a, stack **stack_b)
+void	radix_sort(t_stack **stack_a, t_stack **stack_b)
 {
 	int		max_bits;
 	int		size;
 	int		i;
 	int		j;
-	stack	*head;
+	t_stack	*head;
 
 	max_bits = get_max_bits(*stack_a);
 	size = listsize(*stack_a);

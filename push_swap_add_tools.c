@@ -6,13 +6,13 @@
 /*   By: iel-fadi <iel-fadi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/14 00:38:43 by iel-fadi          #+#    #+#             */
-/*   Updated: 2026/02/14 00:42:40 by iel-fadi         ###   ########.fr       */
+/*   Updated: 2026/02/14 22:02:12 by iel-fadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	pa(stack **stack_a, stack **stack_b)
+void	pa(t_stack **stack_a, t_stack **stack_b)
 {
 	if (*stack_b == NULL)
 		return ;
@@ -20,7 +20,7 @@ void	pa(stack **stack_a, stack **stack_b)
 	write(1, "pa\n", 3);
 }
 
-void	pb(stack **stack_a, stack **stack_b)
+void	pb(t_stack **stack_a, t_stack **stack_b)
 {
 	if (*stack_a == NULL)
 		return ;
@@ -28,10 +28,10 @@ void	pb(stack **stack_a, stack **stack_b)
 	write(1, "pb\n", 3);
 }
 
-void	ra(stack **stack_a)
+void	ra(t_stack **stack_a)
 {
-	stack	*tmp;
-	stack	*head;
+	t_stack	*tmp;
+	t_stack	*head;
 
 	if (*stack_a == NULL || (*stack_a)->next == NULL)
 		return ;
@@ -47,10 +47,10 @@ void	ra(stack **stack_a)
 	write(1, "ra\n", 3);
 }
 
-void	sa(stack **stack_a)
+void	sa(t_stack **stack_a)
 {
-	stack	*first;
-	stack	*second;
+	t_stack	*first;
+	t_stack	*second;
 
 	first = *stack_a;
 	second = first->next;
@@ -60,10 +60,10 @@ void	sa(stack **stack_a)
 	write(1, "sa\n", 3);
 }
 
-void	rra(stack **stack_a)
+void	rra(t_stack **stack_a)
 {
-	stack	*last;
-	stack	*b_last;
+	t_stack	*last;
+	t_stack	*b_last;
 
 	b_last = *stack_a;
 	while (b_last->next->next)

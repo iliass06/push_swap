@@ -6,7 +6,7 @@
 /*   By: iel-fadi <iel-fadi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/04 14:09:51 by iel-fadi          #+#    #+#             */
-/*   Updated: 2026/02/14 00:45:17 by iel-fadi         ###   ########.fr       */
+/*   Updated: 2026/02/14 23:56:48 by iel-fadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,23 +22,26 @@ typedef struct stack
 	int				value;
 	int				index;
 	struct stack	*next;
-}					stack;
+}					t_stack;
 
-void				push_to_stack(stack **src, stack **dest);
-void				pa(stack **stack_a, stack **stack_b);
-void				pb(stack **stack_a, stack **stack_b);
-void				ra(stack **stack_a);
-void				add_node_back(stack **stack_a, int value);
-void				display(stack *stack_a);
-void				index_stack(stack *stack_a);
-void				display_with_index(stack *stack_a);
-int					get_max_bits(stack *stack_a);
-void				radix_sort(stack **stack_a, stack **stack_b);
-int					listsize(stack *stack_a);
-void				rra(stack **stack_a);
-void				sa(stack **stack_a);
-void				sort_three(stack **stack_a);
-void				sort_five(stack **stack_a, stack **stack_b);
-int					is_sorted(stack *stack_a);
+void				push_to_stack(t_stack **src, t_stack **dest);
+void				pa(t_stack **stack_a, t_stack **stack_b);
+void				pb(t_stack **stack_a, t_stack **stack_b);
+void				ra(t_stack **stack_a);
+void				add_node_back(t_stack **stack_a, int value);
+void				display(t_stack *stack_a);
+void				index_stack(t_stack *stack_a);
+void				display_with_index(t_stack *stack_a);
+int					get_max_bits(t_stack *stack_a);
+void				radix_sort(t_stack **stack_a, t_stack **stack_b);
+int					listsize(t_stack *stack_a);
+void				rra(t_stack **stack_a);
+void				sa(t_stack **stack_a);
+void				sort_three(t_stack **stack_a);
+void				sort_five(t_stack **stack_a, t_stack **stack_b);
+int					is_sorted(t_stack *stack_a);
+void				free_mem(char *av[]);
+void				free_stack(t_stack **stack);
+void				error(t_stack **stack_a);
 
 #endif

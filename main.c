@@ -6,18 +6,12 @@
 /*   By: iel-fadi <iel-fadi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/11 16:37:36 by iel-fadi          #+#    #+#             */
-/*   Updated: 2026/02/14 00:38:26 by iel-fadi         ###   ########.fr       */
+/*   Updated: 2026/02/15 00:01:10 by iel-fadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft/libft.h"
 #include "push_swap.h"
-
-static void	error(void)
-{
-	write(2, "Error\n", 6);
-	exit(1);
-}
 
 static int	arg_not_integer(char *arg)
 {
@@ -37,9 +31,9 @@ static int	arg_not_integer(char *arg)
 	return (1);
 }
 
-static int	is_duplicate(stack *stack_a, int nb)
+static int	is_duplicate(t_stack *stack_a, int nb)
 {
-	stack	*tmp;
+	t_stack	*tmp;
 
 	tmp = stack_a;
 	while (tmp)
@@ -51,48 +45,65 @@ static int	is_duplicate(stack *stack_a, int nb)
 	return (1);
 }
 
-static stack	*parse_args(int ac, char *av[])
+static void	process_args(t_stack **stack_a, char **args)
 {
-	stack	*stack_a;
+	int		j;
+	long	nb;
+
+	j = 0;
+	while (args[j])
+	{
+		if (!arg_not_integer(args[j]))
+		{
+			free_mem(args); //!
+			error(stack_a);
+		}
+		nb = ft_atol(args[j]);
+		if (nb > 2147483647 || nb < -2147483648 || !is_duplicate(*stack_a,
+				(int)nb))
+		{
+			free_mem(args); //!
+			error(stack_a);
+		}
+		add_node_back(stack_a, (int)nb);
+		j++;
+	}
+}
+
+static t_stack	*parse_args(int ac, char *av[])
+{
+	t_stack	*stack_a;
 	char	**args;
 	int		i;
-	long	nb;
-	int		j;
 
 	i = 1;
+	stack_a = NULL;
 	while (i < ac)
 	{
 		args = ft_split(av[i], ' ');
-		j = 0;
-		while (args[j])
-		{
-			if (!arg_not_integer(args[j]))
-				error();
-			nb = ft_atol(args[j]);
-			if (nb > 2147483647 || nb < -2147483648 || !is_duplicate(stack_a,
-					(int)nb))
-				error();
-			add_node_back(&stack_a, (int)nb);
-			j++;
-		}
+		if (!args)
+			error(&stack_a); //!
+		process_args(&stack_a, args);
 		i++;
+		free_mem(args); //!
 	}
 	return (stack_a);
 }
 
 int	main(int ac, char *av[])
 {
-	stack	*stack_a;
-	stack	*stack_b;
+	t_stack	*stack_a;
+	t_stack	*stack_b;
 
 	if (ac < 2)
 		return (0);
 	stack_a = parse_args(ac, av);
 	stack_b = NULL;
-	if (stack_a == NULL || stack_a->next == NULL)
+	if (stack_a == NULL || stack_a->next == NULL || is_sorted(stack_a))
+	{
+		free_stack(&stack_a);
 		return (0);
-	if (is_sorted(stack_a))
-		return (0);
+	}
 	index_stack(stack_a);
 	if (listsize(stack_a) == 2)
 		sa(&stack_a);
@@ -102,5 +113,7 @@ int	main(int ac, char *av[])
 		sort_five(&stack_a, &stack_b);
 	else
 		radix_sort(&stack_a, &stack_b);
+	free_stack(&stack_a);
+	free_stack(&stack_b);
 	return (0);
 }

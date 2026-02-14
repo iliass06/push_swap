@@ -6,20 +6,20 @@
 /*   By: iel-fadi <iel-fadi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/14 00:43:00 by iel-fadi          #+#    #+#             */
-/*   Updated: 2026/02/14 00:43:01 by iel-fadi         ###   ########.fr       */
+/*   Updated: 2026/02/14 22:24:41 by iel-fadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft/libft.h"
 #include "push_swap.h"
 
-void	add_node_back(stack **stack_a, int value)
+void	add_node_back(t_stack **stack_a, int value)
 {
-	stack	*new_node;
-	stack	*tmp;
+	t_stack	*new_node;
+	t_stack	*tmp;
 
 	tmp = *stack_a;
-	new_node = malloc(sizeof(stack));
+	new_node = malloc(sizeof(t_stack));
 	if (!new_node)
 		return ;
 	new_node->value = value;
@@ -36,9 +36,9 @@ void	add_node_back(stack **stack_a, int value)
 	tmp->next = new_node;
 }
 
-void	push_to_stack(stack **src, stack **dest)
+void	push_to_stack(t_stack **src, t_stack **dest)
 {
-	stack	*node_to_move;
+	t_stack	*node_to_move;
 
 	node_to_move = *src;
 	*src = (*src)->next;
@@ -46,9 +46,9 @@ void	push_to_stack(stack **src, stack **dest)
 	*dest = node_to_move;
 }
 
-void	sort_three(stack **stack_a)
+void	sort_three(t_stack **stack_a)
 {
-	stack	*head;
+	t_stack	*head;
 	int		max_index;
 
 	head = *stack_a;
@@ -70,7 +70,7 @@ void	sort_three(stack **stack_a)
 		sa(stack_a);
 }
 
-void	sort_five(stack **stack_a, stack **stack_b)
+void	sort_five(t_stack **stack_a, t_stack **stack_b)
 {
 	int	size;
 
@@ -92,7 +92,7 @@ void	sort_five(stack **stack_a, stack **stack_b)
 		sa(stack_a);
 }
 
-int	is_sorted(stack *stack_a)
+int	is_sorted(t_stack *stack_a)
 {
 	while (stack_a && stack_a->next)
 	{

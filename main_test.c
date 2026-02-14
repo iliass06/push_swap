@@ -1,9 +1,9 @@
 #include "push_swap.h"
 
-void	sa(stack **stack_a)
+void	sa(t_stack **stack_a)
 {
-	stack	*first;
-	stack	*second;
+	t_stack	*first;
+	t_stack	*second;
 
 	first = *stack_a;
 	second = first->next;
@@ -18,10 +18,10 @@ void	sa(stack **stack_a)
 	write(1, "sa\n", 3);
 }
 
-void	rra(stack **stack_a)
+void	rra(t_stack **stack_a)
 {
-	stack	*last;
-	stack	*b_last;
+	t_stack	*last;
+	t_stack	*b_last;
 
 	b_last = *stack_a;
 	while (b_last->next->next)
@@ -35,9 +35,9 @@ void	rra(stack **stack_a)
 	write(1, "rra\n", 4);
 }
 
-void	sort_three(stack **stack_a)
+void	sort_three(t_stack **stack_a)
 {
-	stack	*head;
+	t_stack	*head;
 	int		max_index;
 
 	head = *stack_a;
@@ -59,7 +59,7 @@ void	sort_three(stack **stack_a)
 		sa(stack_a);
 }
 
-void	sort_five(stack **stack_a, stack **stack_b)
+void	sort_five(t_stack **stack_a, t_stack **stack_b)
 {
 	int	size;
 
@@ -82,8 +82,8 @@ void	sort_five(stack **stack_a, stack **stack_b)
 }
 int	main(void)
 {
-	stack	*stack_a;
-	stack	*stack_b;
+	t_stack	*stack_a;
+	t_stack	*stack_b;
 
 	stack_a = NULL;
 	stack_b = NULL;
