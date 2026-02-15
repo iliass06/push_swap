@@ -6,7 +6,7 @@
 /*   By: iel-fadi <iel-fadi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/11 16:37:36 by iel-fadi          #+#    #+#             */
-/*   Updated: 2026/02/15 00:01:10 by iel-fadi         ###   ########.fr       */
+/*   Updated: 2026/02/15 01:12:44 by iel-fadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,11 @@ static t_stack	*parse_args(int ac, char *av[])
 		args = ft_split(av[i], ' ');
 		if (!args)
 			error(&stack_a); //!
+		if(!args[0])
+		{
+			free_mem(args);
+			error(&stack_a);
+		}
 		process_args(&stack_a, args);
 		i++;
 		free_mem(args); //!
