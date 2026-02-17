@@ -6,31 +6,37 @@
 #    By: iel-fadi <iel-fadi@student.1337.ma>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/02/14 22:10:13 by iel-fadi          #+#    #+#              #
-#    Updated: 2026/02/15 00:59:27 by iel-fadi         ###   ########.fr        #
+#    Updated: 2026/02/17 13:08:26 by iel-fadi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = ps.a
+NAME = push_swap
 CC = cc
 FLAGS = -Wall -Werror -Wextra
-SRC = push_swap.c push_swap_tools.c push_swap_add_tools.c tools_tmp.c main.c error_leaks.c
-OBJ = push_swap.o push_swap_tools.o push_swap_add_tools.o tools_tmp.o main.o error_leaks.o
-AR = ar rcs
+SRC = push_swap.c push_swap_tools.c push_swap_add_tools.c main.c error_leaks.c
+OBJ = push_swap.o push_swap_tools.o push_swap_add_tools.o main.o error_leaks.o
+# AR = ar rcs
 HEADER = push_swap.h
+LIBFT_PATH = ./libft
+LIBFT = $(LIBFT_PATH)/libft.a 
 
 all: $(NAME)
 
-$(NAME):$(OBJ)
-	$(AR) $(NAME) $(OBJ)
+$(LIBFT):
+	@make -C $(LIBFT_PATH)
 
-%.o: %.c $(LIBFT)
+$(NAME):$(OBJ) $(LIBFT)
+	$(CC) $(FLAGS)  $(OBJ) $(LIBFT) -o $(NAME)
+
+%.o: %.c 
 	$(CC) $(FLAGS) -c $< -o $@
 
 clean:
 	rm -f $(OBJ)
-
+	@make -C $(LIBFT_PATH) clean
 fclean: clean
 	rm -f $(NAME) push_swap
+	@make -C $(LIBFT_PATH) fclean
 
 re: fclean all
 

@@ -6,7 +6,7 @@
 /*   By: iel-fadi <iel-fadi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/14 00:38:43 by iel-fadi          #+#    #+#             */
-/*   Updated: 2026/02/14 22:02:12 by iel-fadi         ###   ########.fr       */
+/*   Updated: 2026/02/16 15:15:10 by iel-fadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,17 +62,17 @@ void	sa(t_stack **stack_a)
 
 void	rra(t_stack **stack_a)
 {
-	t_stack	*last;
-	t_stack	*b_last;
+	t_stack	*nhead;
+	t_stack	*tmp;
 
-	b_last = *stack_a;
-	while (b_last->next->next)
+	tmp = *stack_a;
+	while (tmp->next->next)
 	{
-		b_last = b_last->next;
+		tmp = tmp->next;
 	}
-	last = b_last->next;
-	last->next = *stack_a;
-	b_last->next = NULL;
-	*stack_a = last;
+	nhead = tmp->next;
+	nhead->next = *stack_a;
+	tmp->next = NULL;
+	*stack_a = nhead;
 	write(1, "rra\n", 4);
 }

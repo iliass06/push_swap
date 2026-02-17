@@ -6,13 +6,13 @@
 /*   By: iel-fadi <iel-fadi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/14 23:55:10 by iel-fadi          #+#    #+#             */
-/*   Updated: 2026/02/15 00:06:10 by iel-fadi         ###   ########.fr       */
+/*   Updated: 2026/02/17 11:09:45 by iel-fadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	free_mem(char *av[])
+void	free_args(char *av[])
 {
 	int	i;
 

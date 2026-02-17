@@ -6,7 +6,7 @@
 /*   By: iel-fadi <iel-fadi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/14 00:42:51 by iel-fadi          #+#    #+#             */
-/*   Updated: 2026/02/14 22:04:32 by iel-fadi         ###   ########.fr       */
+/*   Updated: 2026/02/17 12:19:34 by iel-fadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	index_stack(t_stack *stack_a)
 	}
 }
 
-int	get_max_bits(t_stack *stack_a)
+static int	get_max_bits(t_stack *stack_a)
 {
 	t_stack	*head;
 	int		max_bits;
@@ -58,14 +58,12 @@ int	get_max_bits(t_stack *stack_a)
 
 int	listsize(t_stack *stack_a)
 {
-	t_stack	*tmp;
 	int		size;
-
+	
 	size = 0;
-	tmp = stack_a;
-	while (tmp)
+	while (stack_a)
 	{
-		tmp = tmp->next;
+		stack_a = stack_a->next;
 		size++;
 	}
 	return (size);

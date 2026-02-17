@@ -6,7 +6,7 @@
 /*   By: iel-fadi <iel-fadi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/14 00:43:00 by iel-fadi          #+#    #+#             */
-/*   Updated: 2026/02/14 22:24:41 by iel-fadi         ###   ########.fr       */
+/*   Updated: 2026/02/16 21:40:44 by iel-fadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ void	add_node_back(t_stack **stack_a, int value)
 	t_stack	*new_node;
 	t_stack	*tmp;
 
-	tmp = *stack_a;
 	new_node = malloc(sizeof(t_stack));
 	if (!new_node)
 		return ;
@@ -29,6 +28,7 @@ void	add_node_back(t_stack **stack_a, int value)
 		*stack_a = new_node;
 		return ;
 	}
+	tmp = *stack_a;
 	while (tmp->next)
 	{
 		tmp = tmp->next;
@@ -51,21 +51,12 @@ void	sort_three(t_stack **stack_a)
 	t_stack	*head;
 	int		max_index;
 
-	head = *stack_a;
-	max_index = head->index;
-	while (head)
-	{
-		if (max_index < head->index)
-			max_index = head->index;
-		head = head->next;
-	}
+	max_index = listsize(*stack_a) - 1;
 	head = *stack_a;
 	if (head->index == max_index)
 		ra(stack_a);
 	else if ((head->next)->index == max_index)
-	{
 		rra(stack_a);
-	}
 	if ((*stack_a)->index > ((*stack_a)->next)->index)
 		sa(stack_a);
 }

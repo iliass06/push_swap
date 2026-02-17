@@ -6,7 +6,7 @@
 /*   By: iel-fadi <iel-fadi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/11 16:37:36 by iel-fadi          #+#    #+#             */
-/*   Updated: 2026/02/15 01:12:44 by iel-fadi         ###   ########.fr       */
+/*   Updated: 2026/02/17 11:10:07 by iel-fadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,14 +55,14 @@ static void	process_args(t_stack **stack_a, char **args)
 	{
 		if (!arg_not_integer(args[j]))
 		{
-			free_mem(args); //!
+			free_args(args); //!
 			error(stack_a);
 		}
 		nb = ft_atol(args[j]);
 		if (nb > 2147483647 || nb < -2147483648 || !is_duplicate(*stack_a,
 				(int)nb))
 		{
-			free_mem(args); //!
+			free_args(args); //!
 			error(stack_a);
 		}
 		add_node_back(stack_a, (int)nb);
@@ -85,12 +85,12 @@ static t_stack	*parse_args(int ac, char *av[])
 			error(&stack_a); //!
 		if(!args[0])
 		{
-			free_mem(args);
+			free_args(args);
 			error(&stack_a);
-		}
+		} //!
 		process_args(&stack_a, args);
 		i++;
-		free_mem(args); //!
+		free_args(args); //!
 	}
 	return (stack_a);
 }

@@ -80,8 +80,8 @@ void	sort_five(t_stack **stack_a, t_stack **stack_b)
 	if ((*stack_a)->index > ((*stack_a)->next)->index)
 		sa(stack_a);
 }
-int	main(void)
-{
+int	main(int ac, char *av[])
+{{
 	t_stack	*stack_a;
 	t_stack	*stack_b;
 
@@ -94,5 +94,6 @@ int	main(void)
 	index_stack(stack_a);
 	display(stack_a);
 	sort_three(&stack_a);
-	display(stack_a);
+	display(stack_a);}
+
 }
