@@ -6,7 +6,7 @@
 /*   By: iel-fadi <iel-fadi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/14 00:43:00 by iel-fadi          #+#    #+#             */
-/*   Updated: 2026/02/16 21:40:44 by iel-fadi         ###   ########.fr       */
+/*   Updated: 2026/02/18 11:26:34 by iel-fadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,14 @@ void	sort_three(t_stack **stack_a)
 	t_stack	*head;
 	int		max_index;
 
-	max_index = listsize(*stack_a) - 1;
+	head = *stack_a;
+	max_index = head->index;
+	while (head)
+	{
+		if (max_index < head->index)
+			max_index = head->index;
+		head = head->next;
+	}
 	head = *stack_a;
 	if (head->index == max_index)
 		ra(stack_a);
